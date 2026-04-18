@@ -1,0 +1,257 @@
+@import "../../vendors/mixins";
+@import "../../vendors/variables";
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;
+    border-bottom: 1px solid #e8edf3;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+
+    .mobile-nav {
+        overflow: hidden;
+        height: 0;
+        background: #ffffff;
+        border-top: 1px solid #eef2f6;
+        transition: all 0.3s ease;
+
+        @media (min-width: 922px) {
+            display: none;
+        }
+
+        li {
+            button {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                min-height: 52px;
+                padding: 0 20px;
+                font-size: 15px;
+                font-weight: 500;
+                border: 0;
+                border-bottom: 1px solid #edf2f7;
+                background: #ffffff;
+                text-decoration: none;
+                color: #1f2937;
+                transition: 0.2s ease;
+
+                &:hover {
+                    background: #f8fbff;
+                    color: #0d6efd;
+                }
+            }
+        }
+
+        .mobile-admin-button {
+            font-weight: 700;
+            color: #0f172a;
+        }
+    }
+
+    .open-nav {
+        height: auto;
+    }
+
+    .header-content {
+        @include flexBetween;
+        gap: 16px;
+        padding: 16px 0;
+
+        @media (max-width: 922px) {
+            padding: 14px 0 !important;
+        }
+
+        .header-left {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex: 1;
+
+            .logo-part {
+                flex-shrink: 0;
+
+                @media (max-width: 544px) {
+                    max-width: 150px;
+                }
+
+                .logo-link {
+                    display: inline-flex;
+                    align-items: center;
+                }
+
+                img {
+                    width: 100%;
+                    max-width: 180px;
+                    object-fit: contain;
+                    display: block;
+                }
+            }
+
+            ul {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 10px;
+
+                @media (max-width: 922px) {
+                    display: none;
+                }
+
+                li {
+                    .nav-pill {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        min-height: 40px;
+                        padding: 0 16px;
+                        border: 1px solid #dde6ef;
+                        border-radius: 999px;
+                        background: #f8fafc;
+                        color: #334155;
+                        font-size: 14px;
+                        font-weight: 500;
+                        transition: 0.25s ease;
+
+                        &:hover {
+                            background: #eef6ff;
+                            border-color: #bfd8ff;
+                            color: #0d6efd;
+                        }
+                    }
+                }
+            }
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+
+            p {
+                margin: 0;
+            }
+
+            .admin-button {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                margin-right: 0;
+                padding: 10px 16px;
+                border: 1px solid #dde6ef;
+                border-radius: 12px;
+                background: #f8fafc;
+                color: #0f172a;
+                font-size: 14px;
+                font-weight: 600;
+                transition: 0.25s ease;
+
+                svg {
+                    width: 18px;
+                    height: 18px;
+                }
+
+                &:hover {
+                    background: #0f172a;
+                    border-color: #0f172a;
+                    color: #ffffff;
+                }
+
+                @media (max-width: 640px) {
+                    padding: 10px 12px;
+
+                    span {
+                        display: none;
+                    }
+                }
+            }
+
+            .price {
+                padding: 10px 14px;
+                border-radius: 12px;
+                background: #f3f8ff;
+                color: #0d6efd;
+                font-weight: 700;
+                font-size: 14px;
+                white-space: nowrap;
+
+                @media (max-width: 544px) {
+                    display: none;
+                }
+            }
+
+            .cart {
+                position: relative;
+                width: 46px;
+                height: 46px;
+                border-radius: 14px;
+                border: 1px solid #dde6ef;
+                background: #ffffff;
+                transition: 0.25s ease;
+
+                &:hover {
+                    background: #f8fbff;
+                    border-color: #bfd8ff;
+                }
+
+                a {
+                    width: 100%;
+                    height: 100%;
+                    text-decoration: none;
+                    @include flexCenter;
+                }
+
+                svg {
+                    width: 23px;
+                    height: 23px;
+                    fill: #0f172a;
+                }
+
+                .cart-quantity {
+                    position: absolute;
+                    right: -6px;
+                    top: -6px;
+                    background-color: #0d6efd;
+                    color: #ffffff;
+                    font-weight: 700;
+                    width: 20px;
+                    height: 20px;
+                    @include flexCenter;
+                    border-radius: 50%;
+                    font-size: 11px;
+                    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.35);
+                }
+            }
+
+            .hamburger-menu {
+                @media (min-width: 922px) {
+                    display: none;
+                }
+
+                button {
+                    width: 46px;
+                    height: 46px;
+                    border-radius: 14px;
+                    border: 1px solid #dde6ef;
+                    background: #ffffff;
+                    outline: 0;
+                    color: #0f172a;
+                    transition: 0.25s ease;
+
+                    &:hover {
+                        background: #f8fbff;
+                        border-color: #bfd8ff;
+                        color: #0d6efd;
+                    }
+
+                    svg {
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+    }
+}
