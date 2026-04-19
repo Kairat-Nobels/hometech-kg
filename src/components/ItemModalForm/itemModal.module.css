@@ -1,0 +1,112 @@
+.modalRoot :global(.rs-modal-content) {
+  background: linear-gradient(180deg, #111827, #0f172a) !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.titleWrap {
+  display: flex;
+  gap: 12px;
+}
+
+.titleIcon {
+  width: 45px;
+  height: 45px;
+  background: rgba(37, 99, 235, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #60a5fa;
+}
+
+.titleWrap h3 {
+  margin: 0 0 6px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.titleWrap p {
+  margin: 0;
+  color: #94a3b8;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* IMAGE */
+.imageBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.imageBlock img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.uploadBtn {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #fff !important;
+}
+
+/* INPUT */
+.inputShell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.inputShell input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  width: 100%;
+}
+
+.textareaShell {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.textareaShell textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  resize: none;
+}
+
+/* BUTTONS */
+.footer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.saveButton {
+  background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+  color: #fff !important;
+}
+
+.cancelButton {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #fff !important;
+}

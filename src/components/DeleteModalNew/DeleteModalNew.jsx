@@ -1,6 +1,8 @@
 import React from 'react';
 import { Modal, Button } from 'rsuite';
 import { useDispatch } from 'react-redux';
+import { FiTrash2, FiAlertTriangle } from 'react-icons/fi';
+import styles from './deleteModal.module.css';
 
 const DeleteModal = ({ deleteFunc, open, onClose, id }) => {
   const dispatch = useDispatch();
@@ -11,16 +13,31 @@ const DeleteModal = ({ deleteFunc, open, onClose, id }) => {
   };
 
   return (
-    <Modal open={open} onClose={onClose} size="xs">
+    <Modal open={open} onClose={onClose} size="420px" className={styles.modalRoot}>
       <Modal.Header>
-        <Modal.Title>Удалить запись</Modal.Title>
+        <Modal.Title>
+          <div className={styles.titleWrap}>
+            <div className={styles.icon}>
+              <FiAlertTriangle />
+            </div>
+            <div>
+              <h3>Удаление</h3>
+              <p>Это действие нельзя отменить</p>
+            </div>
+          </div>
+        </Modal.Title>
       </Modal.Header>
-      <Modal.Body>Вы уверены, что хотите удалить это?</Modal.Body>
-      <Modal.Footer>
-        <Button onClick={handleDelete} appearance="primary" color="red">
-          Удалить
+
+      <Modal.Body className={styles.body}>
+        <p>Вы уверены, что хотите удалить эту запись?</p>
+      </Modal.Body>
+
+      <Modal.Footer className={styles.footer}>
+        <Button onClick={handleDelete} className={styles.deleteButton}>
+          <FiTrash2 /> Удалить
         </Button>
-        <Button onClick={onClose} appearance="subtle">
+
+        <Button onClick={onClose} className={styles.cancelButton}>
           Отмена
         </Button>
       </Modal.Footer>

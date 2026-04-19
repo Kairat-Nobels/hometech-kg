@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Button } from 'rsuite';
+import { FiMapPin, FiPackage, FiSave } from 'react-icons/fi';
+import styles from './editOrderModal.module.css';
 
 const statusOptions = [
   "Заказано",
@@ -9,43 +11,72 @@ const statusOptions = [
 ];
 
 const EditOrderModal = ({ open, onClose, order, onSave }) => {
-  const [status, setStatus] = useState(order.status);
-  const [address, setAddress] = useState(order.address);
+  const [status, setStatus] = useState(order?.status || "Заказано");
+  const [address, setAddress] = useState(order?.address || "");
+
+  useEffect(() => {
+    setStatus(order?.status || "Заказано");
+    setAddress(order?.address || "");
+  }, [order, open]);
 
   const handleSave = () => {
     onSave({ ...order, status, address });
   };
 
+  if (!order) return null;
+
   return (
-    <Modal open={open} onClose={onClose} size="xs">
+    <Modal open={open} onClose={onClose} size="500px" className={styles.modalRoot}>
       <Modal.Header>
-        <Modal.Title>Редактировать заказ #{order.id}</Modal.Title>
+        <Modal.Title>
+          <div className={styles.titleWrap}>
+            <div className={styles.titleIcon}>
+              <FiPackage />
+            </div>
+            <div>
+              <h3>Редактировать заказ #{order.id}</h3>
+              <p>Измените статус заказа и адрес доставки</p>
+            </div>
+          </div>
+        </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <div className="mb-3">
-          <label className="form-label">Статус</label>
-          <select
-            className="form-select"
-            value={status}
-            onChange={e => setStatus(e.target.value)}
-          >
-            {statusOptions.map(opt => (
-              <option key={opt} value={opt}>{opt}</option>
-            ))}
-          </select>
+
+      <Modal.Body className={styles.body}>
+        <div className={styles.formGroup}>
+          <label>Статус</label>
+          <div className={styles.selectShell}>
+            <FiPackage />
+            <select value={status} onChange={(e) => setStatus(e.target.value)}>
+              {statusOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div className="mb-3">
-          <label className="form-label">Адрес</label>
-          <input
-            className="form-control"
-            value={address}
-            onChange={e => setAddress(e.target.value)}
-          />
+
+        <div className={styles.formGroup}>
+          <label>Адрес</label>
+          <div className={styles.inputShell}>
+            <FiMapPin />
+            <input
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="Введите адрес доставки"
+            />
+          </div>
         </div>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={handleSave} appearance="primary">Сохранить</Button>
-        <Button onClick={onClose} appearance="subtle">Отмена</Button>
+
+      <Modal.Footer className={styles.footer}>
+        <Button onClick={handleSave} className={styles.saveButton}>
+          <FiSave />
+          Сохранить
+        </Button>
+        <Button onClick={onClose} className={styles.cancelButton}>
+          Отмена
+        </Button>
       </Modal.Footer>
     </Modal>
   );

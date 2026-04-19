@@ -1,0 +1,237 @@
+.tableWrapper {
+  width: 100%;
+}
+
+.table {
+  background: transparent;
+  color: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.table :global(.rs-table) {
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+.table :global(.rs-table-row-header) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-cell) {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.table :global(.rs-table-cell-content) {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+.table :global(.rs-table-header-row-wrapper) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-row) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-hover) .rs-table-row:hover .rs-table-cell {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.table :global(.rs-table-cell-header .rs-table-cell-content) {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.table :global(.rs-table-body-row-wrapper) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-scrollbar-vertical) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-scrollbar-horizontal) {
+  background: transparent !important;
+}
+
+.imageWrap {
+  width: 100px;
+  height: 100px;
+  padding: 8px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px 0;
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+}
+
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.titleValue {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.contentValue {
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.priceValue {
+  color: #facc15;
+  font-weight: 800;
+}
+
+.emptyValue {
+  color: #94a3b8;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionButton {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+}
+
+.actionButton:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.editIcon {
+  color: #4ade80;
+  font-size: 20px;
+}
+
+.deleteIcon {
+  color: #f87171;
+  font-size: 20px;
+}
+
+.table :global(.rs-table) {
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+.table :global(.rs-table-row-header) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-cell) {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.table :global(.rs-table-cell-content) {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+.table :global(.rs-table-header-row-wrapper) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-row) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-hover) .rs-table-row:hover .rs-table-cell {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.table :global(.rs-table-cell-header .rs-table-cell-content) {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.table :global(.rs-table-body-row-wrapper) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-scrollbar-vertical) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-scrollbar-horizontal) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-cell-first) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-cell-last) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-fixed-left),
+.table :global(.rs-table-fixed-right) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-fixed-left .rs-table-cell),
+.table :global(.rs-table-fixed-right .rs-table-cell) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-fixed-left .rs-table-cell-content),
+.table :global(.rs-table-fixed-right .rs-table-cell-content) {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+.table :global(.rs-table-cell-header.rs-table-cell-first .rs-table-cell-content),
+.table :global(.rs-table-cell-header.rs-table-cell-last .rs-table-cell-content) {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: #ffffff !important;
+}
+
+.table :global(.rs-table-cell-header) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-cell-header .rs-table-cell-content) {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}

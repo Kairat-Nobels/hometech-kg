@@ -1,0 +1,110 @@
+.tableWrapper {
+  width: 100%;
+}
+
+.table {
+  background: transparent;
+  color: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.table :global(.rs-table) {
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+.table :global(.rs-table-row-header) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-cell) {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.table :global(.rs-table-cell-content) {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+.table :global(.rs-table-header-row-wrapper) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-row) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-hover) .rs-table-row:hover .rs-table-cell {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.table :global(.rs-table-cell-header) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-cell-header .rs-table-cell-content) {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.table :global(.rs-table-body-row-wrapper) {
+  background: transparent !important;
+}
+
+.nameValue {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.phoneValue {
+  color: #60a5fa;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.commentBox {
+  padding: 12px 14px;
+  margin: 6px 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.emptyValue {
+  color: #94a3b8;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionButton {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+}
+
+.actionButton:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.deleteIcon {
+  color: #f87171;
+  font-size: 20px;
+}

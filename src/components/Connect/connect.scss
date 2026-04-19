@@ -1,45 +1,153 @@
-@import "../../vendors/mixins";
-@import "../../vendors/variables";
+.connect-section {
+    padding: 80px 0;
+    background:
+        radial-gradient(circle at left top, rgba(37, 99, 235, 0.1), transparent 24%),
+        linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
+    color: #ffffff;
 
-.home-connect {
-    background-image: url(https://websitedemos.net/furniture-store-04/wp-content/uploads/sites/155/2021/01/footer-bg.jpg);
-    background-position: center center;
-    padding: 80px 30px;
-    @include flexCenter;
-    flex-direction: column;
+    .connect-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 0.95fr;
+        gap: 32px;
+        align-items: start;
 
-    h3 {
-        font-size: 21px;
-        color: white;
-        font-weight: 400;
-        margin-bottom: 1em;
-        line-height: 1.5;
+        @media (max-width: 992px) {
+            grid-template-columns: 1fr;
+        }
     }
 
-    .connections {
-        @include flexCenter;
-        gap: 8px;
-        flex-wrap: wrap;
+    .connect-left {
+        .connect-label {
+            display: inline-flex;
+            margin-bottom: 14px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(59, 130, 246, 0.28);
+            background: rgba(37, 99, 235, 0.12);
+            color: #60a5fa;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
 
-        .connect-button {
-            padding: 13px;
-            background-color: #78909C;
-            color: white;
-            border: 0;
-            outline: 0;
-            flex-wrap: wrap;
+        h2 {
+            margin-bottom: 16px;
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.15;
+            color: #ffffff;
 
-            @media(max-width: 767px) {
-                padding: 10px;
+            @media (max-width: 768px) {
+                font-size: 32px;
+            }
+        }
+
+        p {
+            max-width: 640px;
+            margin-bottom: 28px;
+            color: #cbd5e1;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+    }
+
+    .connect-info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .connect-info-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 18px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            h4 {
+                margin: 0 0 6px;
+                font-size: 16px;
+                font-weight: 700;
+                color: #ffffff;
             }
 
-            svg {
-                width: 20px;
-                height: 20px;
+            p {
+                margin: 0;
+                color: #94a3b8;
+                line-height: 1.6;
             }
+        }
+
+        .connect-info-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(250, 204, 21, 0.12);
+            color: #facc15;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+    }
+
+    .connect-right {
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+
+            @media (max-width: 576px) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .social-card {
+            min-height: 190px;
+            padding: 26px;
+            border-radius: 24px;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: 0.25s ease;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
 
             &:hover {
-                background-color: #607d8b;
+                transform: translateY(-5px);
+                border-color: rgba(96, 165, 250, 0.3);
+            }
+
+            .social-icon {
+                width: 58px;
+                height: 58px;
+                margin-bottom: 18px;
+                border-radius: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(135deg, #2563eb 0%, #facc15 100%);
+                color: #0f172a;
+                font-size: 28px;
+            }
+
+            h3 {
+                margin-bottom: 8px;
+                font-size: 22px;
+                font-weight: 700;
+                color: #ffffff;
+            }
+
+            p {
+                margin: 0;
+                color: #94a3b8;
+                line-height: 1.6;
             }
         }
     }

@@ -1,0 +1,85 @@
+.modalRoot :global(.rs-modal-content) {
+  background: linear-gradient(180deg, #111827, #0f172a) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.modalRoot :global(.rs-modal-header) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modalRoot :global(.rs-modal-footer) {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.titleWrap {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.titleWrap h3 {
+  margin: 0 0 6px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(248, 113, 113, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f87171;
+}
+
+.titleWrap h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.titleWrap p {
+  margin: 0;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.body {
+  padding-top: 10px;
+  color: #e2e8f0;
+  font-size: 15px;
+}
+
+.footer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* КНОПКИ */
+.deleteButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #dc2626, #ef4444) !important;
+  color: white !important;
+  border-radius: 12px !important;
+  padding: 10px 16px !important;
+  font-weight: 700;
+}
+
+.deleteButton:hover {
+  transform: translateY(-1px);
+}
+
+.cancelButton {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  padding: 10px 16px !important;
+}

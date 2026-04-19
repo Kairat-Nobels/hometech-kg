@@ -1,4 +1,4 @@
-const api = "https://a966685f5a33544c.mokky.dev/";
+const api = "https://89c8ee237c686207.mokky.dev/";
 export const itemsApi = api + 'items'
 export const ordersApi = api + 'orders'
 export const reviewsApi = api + 'reviews'

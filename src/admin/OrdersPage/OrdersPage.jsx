@@ -4,8 +4,9 @@ import { RotatingLines } from 'react-loader-spinner';
 import RecordsTable from '../../Tables/RecordsTable/RecordsTable';
 import DeleteModal from '../../components/DeleteModalNew/DeleteModalNew';
 import EditOrderModal from '../../components/EditOrderModal/EditOrderModal';
-import 'rsuite/dist/rsuite.min.css'
+import 'rsuite/dist/rsuite.min.css';
 import { deleteOrder, updateOrder } from '../../store/slices/ordersSlice';
+import styles from './ordersPage.module.css';
 
 const statusList = [
   { label: "Все", value: "all" },
@@ -23,46 +24,80 @@ const OrdersPage = () => {
   const [editTarget, setEditTarget] = useState(null);
   const [statusFilter, setStatusFilter] = useState("all");
 
-  const handleEdit = (order) => setEditTarget(order);
+  const handleEdit = (order) => {
+    setEditTarget(order);
+  };
 
   const handleEditSave = (updated) => {
-    dispatch(updateOrder({ id: updated.id, updatedData: { status: updated.status, address: updated.address } }));
+    dispatch(
+      updateOrder({
+        id: updated.id,
+        updatedData: {
+          status: updated.status,
+          address: updated.address
+        }
+      })
+    );
     setEditTarget(null);
   };
 
+  const filteredOrders =
+    statusFilter === "all"
+      ? orders
+      : orders.filter((order) => order.status === statusFilter);
+
   return (
-    <div className='adminRecords'>
-      <div className='adminRecordHeader d-flex justify-content-between align-items-center mb-3'>
-        <h3>Заказы</h3>
-        <div className="d-flex gap-2">
-          {statusList.map(s => (
-            <button
-              key={s.value}
-              className={`btn btn-sm ${statusFilter === s.value ? 'btnActive' : 'btn-outline'}`}
-              onClick={() => setStatusFilter(s.value)}
-            >
-              {s.label}
-            </button>
-          ))}
+    <div className={styles.ordersPage}>
+      <div className={styles.header}>
+        <div>
+          <span className={styles.badge}>Заказы</span>
+          <h2>Управление заказами</h2>
+          <p>Просмотр, фильтрация, редактирование статусов и удаление заказов.</p>
+        </div>
+
+        <div className={styles.countCard}>
+          <span>Всего заказов</span>
+          <strong>{orders?.length || 0}</strong>
         </div>
       </div>
 
-      {loading ? (
-        <div className="center">
-          <RotatingLines strokeColor="grey" width="60" />
-          <p>Загрузка...</p>
-        </div>
-      ) : error ? (
-        <h3>{error}</h3>
-      ) : (
-        <RecordsTable
-          data={statusFilter === "all"
-            ? orders
-            : orders.filter(order => order.status === statusFilter)}
-          onDelete={setDeleteTarget}
-          onEdit={handleEdit}
-        />
-      )}
+      <div className={styles.filters}>
+        {statusList.map((status) => (
+          <button
+            key={status.value}
+            className={`${styles.filterButton} ${statusFilter === status.value ? styles.active : ''
+              }`}
+            onClick={() => setStatusFilter(status.value)}
+          >
+            {status.label}
+          </button>
+        ))}
+      </div>
+
+      <div className={styles.tableBlock}>
+        {loading ? (
+          <div className={styles.center}>
+            <RotatingLines strokeColor="#60a5fa" width="52" />
+            <p>Загрузка заказов...</p>
+          </div>
+        ) : error ? (
+          <div className={styles.errorBlock}>
+            <h3>Ошибка загрузки</h3>
+            <p>{error}</p>
+          </div>
+        ) : filteredOrders.length === 0 ? (
+          <div className={styles.emptyBlock}>
+            <h3>Заказы не найдены</h3>
+            <p>По выбранному статусу пока нет заказов.</p>
+          </div>
+        ) : (
+          <RecordsTable
+            data={filteredOrders}
+            onDelete={setDeleteTarget}
+            onEdit={handleEdit}
+          />
+        )}
+      </div>
 
       {deleteTarget && (
         <DeleteModal

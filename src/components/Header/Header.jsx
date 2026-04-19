@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import logo from "../../assets/images/logo.png";
 import "./header.scss";
 import { HiShoppingCart } from "react-icons/hi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
-import { FiUser } from "react-icons/fi";
+import { FiUser, FiZap, FiGrid } from "react-icons/fi";
 import { useDispatch, useSelector } from 'react-redux';
-import Connect from '../Connect/Connect';
 import Footer from '../Footer/Footer';
-import Contact from '../Contact/Contact';
 import { getOrders } from '../../store/slices/ordersSlice';
 import { getReviews } from '../../store/slices/reviewsSlice';
 import CameModal from '../CameModal/CameModal';
@@ -80,29 +77,38 @@ const Header = () => {
         closeHamburger();
     };
 
+    const featuredCategories = categories || [];
+
     return (
         <>
-            <header>
+            <header className="site-header">
                 <div className="page-container">
                     <div className="header-content">
                         <div className="header-left">
                             <div className="logo-part">
                                 <Link to="/" className="logo-link">
-                                    <img src={logo} alt="HOME TECH KG" />
+                                    <div className="logo-icon">
+                                        <FiZap />
+                                    </div>
+                                    <div className="logo-text">
+                                        <h2>HOME TECH KG</h2>
+                                        <p>техника для дома</p>
+                                    </div>
                                 </Link>
                             </div>
 
                             <ul className="desktop-nav list-unstyled m-0">
                                 <li>
                                     <button
-                                        className="clean-button nav-pill"
+                                        className="clean-button nav-pill catalog-pill"
                                         onClick={() => changeCategory("All")}
                                     >
-                                        Все товары
+                                        <FiGrid />
+                                        <span>Каталог</span>
                                     </button>
                                 </li>
 
-                                {categories?.map((category) => (
+                                {featuredCategories.map((category) => (
                                     <li key={category.id}>
                                         <button
                                             className="clean-button nav-pill"
@@ -188,9 +194,6 @@ const Header = () => {
             <main>
                 <Outlet />
             </main>
-
-            <Connect />
-            <Contact />
             <Footer />
         </>
     );

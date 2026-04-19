@@ -1,44 +1,60 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { decrementQuantity, incrementQuantity, removeItem } from '../../../../store/features/cartSlice';
+import {
+    decrementQuantity,
+    incrementQuantity,
+    removeItem
+} from '../../../../store/features/cartSlice';
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import './cartItem.scss';
 
+const CartItem = ({ image, title, price, quantity, category, item }) => {
+    const dispatch = useDispatch();
 
-const CartItem = (props) => {
-    const { image, title, price, quantity, category, item } = props;
-    const dispatch = useDispatch()
     return (
-        <div className="row mb-4 d-flex justify-content-around align-items-center">
-            <div className="col-md-2 col-lg-2 col-xl-2">
-                <img
-                    src={image}
-                    className="img-fluid rounded-3" alt="Cotton T-shirt" />
+        <div className="cart-item">
+            <div className="cart-item-image">
+                <img src={image} alt={title} />
             </div>
-            <div className="col-md-3 col-lg-3 col-xl-3">
-                <h6 className="text-muted">{category}</h6>
-                <h6 className="text-black mb-0">{title}</h6>
+
+            <div className="cart-item-content">
+                <span className="cart-item-category">{category}</span>
+                <h3 className="cart-item-title">{title}</h3>
             </div>
-            <div className="col-md-3 col-lg-3 col-xl-2 d-flex align-items-center">
-                <button className="quantity-button px-2"
-                    onClick={() => dispatch(decrementQuantity(item.id))}>
+
+            <div className="cart-item-quantity">
+                <button
+                    className="quantity-button"
+                    onClick={() => dispatch(decrementQuantity(item.id))}
+                >
                     -
                 </button>
 
-                <span className='px-2'>{quantity}</span>
+                <span className="quantity-value">{quantity}</span>
 
-                <button className="px-2 quantity-button"
-                    onClick={() => dispatch(incrementQuantity(item.id))}>
+                <button
+                    className="quantity-button"
+                    onClick={() => dispatch(incrementQuantity(item.id))}
+                >
                     +
                 </button>
             </div>
-            <div className="col-md-3 col-lg-2 p-0">
-                <h6 className="mb-0">{price * quantity}.00 сом</h6>
+
+            <div className="cart-item-price">
+                <h4>{price * quantity}.00 сом</h4>
             </div>
-            <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-                <button onClick={() => dispatch(removeItem(item.id))} className='cart-trash'><IoIosCloseCircleOutline /></button>
+
+            <div className="cart-item-remove">
+                <button
+                    onClick={() => dispatch(removeItem(item.id))}
+                    className="cart-trash"
+                    aria-label="Удалить товар"
+                >
+                    <IoIosCloseCircleOutline />
+                </button>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default CartItem
+export default CartItem;

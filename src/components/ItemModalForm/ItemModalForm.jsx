@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Modal, Button, Form, Schema, Uploader, Input, SelectPicker } from "rsuite";
+import { Modal, Button, Form, Schema, Uploader, SelectPicker } from "rsuite";
 import { useDispatch, useSelector } from "react-redux";
+import { FiImage, FiTag, FiType, FiFileText, FiDollarSign, FiUpload } from "react-icons/fi";
 import { createItem, updateItem } from "../../store/slices/itemsSlice";
+import styles from "./itemModal.module.css";
 
 const { StringType, NumberType } = Schema.Types;
 
@@ -12,8 +14,6 @@ const model = Schema.Model({
   price: NumberType("Цена должна быть числом").isRequired("Укажите цену"),
 });
 
-const Textarea = React.forwardRef((props, ref) => <Input {...props} as="textarea" ref={ref} />);
-
 const ItemModalForm = ({ open, onClose, itemData }) => {
   const dispatch = useDispatch();
   const formRef = useRef();
@@ -21,6 +21,8 @@ const ItemModalForm = ({ open, onClose, itemData }) => {
 
   const [formValue, setFormValue] = useState({});
   const [imgUrl, setImgUrl] = useState("");
+
+  const isEdit = Boolean(itemData);
 
   useEffect(() => {
     if (itemData) {
@@ -35,14 +37,14 @@ const ItemModalForm = ({ open, onClose, itemData }) => {
       setFormValue({});
       setImgUrl("");
     }
-  }, [itemData]);
+  }, [itemData, open]);
 
   const handleSubmit = () => {
     if (!formRef.current.check()) return;
 
     const payload = { ...formValue, image: imgUrl };
 
-    if (itemData) {
+    if (isEdit) {
       dispatch(updateItem({ id: itemData.id, updatedData: payload }));
     } else {
       dispatch(createItem(payload));
@@ -52,92 +54,135 @@ const ItemModalForm = ({ open, onClose, itemData }) => {
   };
 
   return (
-    <Modal open={open} onClose={onClose} size="600px" className="add-edit-modal">
+    <Modal open={open} onClose={onClose} size="650px" className={styles.modalRoot}>
       <Modal.Header>
-        <Modal.Title>{itemData ? "Редактировать товар" : "Добавить товар"}</Modal.Title>
+        <Modal.Title>
+          <div className={styles.titleWrap}>
+            <div className={styles.titleIcon}>
+              <FiTag />
+            </div>
+            <div>
+              <h3>{isEdit ? "Редактировать товар" : "Добавить товар"}</h3>
+              <p>Заполните информацию о товаре</p>
+            </div>
+          </div>
+        </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <div className="item-modal__img">
-          {imgUrl && (
-            <img
-              src={imgUrl}
-              alt="item"
-              style={{ width: "100%", borderRadius: 8 }}
-            />
-          )}
+
+      <Modal.Body className={styles.body}>
+        {/* IMAGE */}
+        <div className={styles.imageBlock}>
+          {imgUrl && <img src={imgUrl} alt="preview" />}
 
           <Uploader
-            action="https://a966685f5a33544c.mokky.dev/uploads"
+            action="https://89c8ee237c686207.mokky.dev/uploads"
             name="file"
             autoUpload
-            style={{ marginTop: '15px' }}
             fileListVisible={false}
             onSuccess={(res) => {
-              const url = res?.url;
-              if (url) setImgUrl(url);
+              if (res?.url) setImgUrl(res.url);
             }}
           >
-            <Button appearance="ghost">Загрузить фото</Button>
+            <Button className={styles.uploadBtn}>
+              <FiUpload /> Загрузить фото
+            </Button>
           </Uploader>
 
-          <Input
-            placeholder="Или вставьте ссылку на изображение"
-            value={imgUrl}
-            onChange={setImgUrl}
-            style={{ marginTop: 10 }}
-          />
+          <div className={styles.inputShell}>
+            <FiImage />
+            <input
+              placeholder="Или вставьте ссылку на изображение"
+              value={imgUrl}
+              onChange={(e) => setImgUrl(e.target.value)}
+            />
+          </div>
         </div>
 
+        {/* FORM */}
         <Form
           ref={formRef}
           model={model}
           formValue={formValue}
           onChange={setFormValue}
           fluid
-          className="item-modal__form"
         >
           <Form.Group>
-            <Form.ControlLabel>Категория:</Form.ControlLabel>
-            <Form.Control
-              className="category"
-              name="category"
-              accepter={SelectPicker}
-              data={categories.map(cat => ({ label: cat.name, value: cat.name }))}
-              searchable={false}
+            <label>Категория</label>
+            <SelectPicker
+              data={categories.map((c) => ({
+                label: c.name,
+                value: c.name,
+              }))}
+              value={formValue.category}
+              onChange={(val) => setFormValue({ ...formValue, category: val })}
+              className={styles.select}
               placeholder="Выберите категорию"
+              searchable={false}
+              block
             />
           </Form.Group>
 
           <Form.Group>
-            <Form.ControlLabel>Название:</Form.ControlLabel>
-            <Form.Control name="title" />
+            <label>Название</label>
+            <div className={styles.inputShell}>
+              <FiType />
+              <input
+                value={formValue.title || ""}
+                onChange={(e) =>
+                  setFormValue({ ...formValue, title: e.target.value })
+                }
+                placeholder="Название товара"
+              />
+            </div>
           </Form.Group>
 
           <Form.Group>
-            <Form.ControlLabel>Описание:</Form.ControlLabel>
-            <Form.Control name="content" accepter={Textarea} rows={3} />
+            <label>Описание</label>
+            <div className={styles.textareaShell}>
+              <FiFileText />
+              <textarea
+                rows={4}
+                value={formValue.content || ""}
+                onChange={(e) =>
+                  setFormValue({ ...formValue, content: e.target.value })
+                }
+                placeholder="Описание товара"
+              />
+            </div>
           </Form.Group>
 
           <Form.Group>
-            <Form.ControlLabel>Цена (сом):</Form.ControlLabel>
-            <Form.Control name="price" type="number" />
+            <label>Цена</label>
+            <div className={styles.inputShell}>
+              <FiDollarSign />
+              <input
+                type="number"
+                value={formValue.price || ""}
+                onChange={(e) =>
+                  setFormValue({ ...formValue, price: e.target.value })
+                }
+                placeholder="Цена"
+              />
+            </div>
           </Form.Group>
         </Form>
       </Modal.Body>
-      <Modal.Footer className="modal-footer">
+
+      <Modal.Footer className={styles.footer}>
         <Button
+          onClick={handleSubmit}
           disabled={
             !formValue.title ||
             !formValue.category ||
             !formValue.content ||
             !formValue.price
           }
-          appearance="primary"
-          onClick={handleSubmit}
+          className={styles.saveButton}
         >
-          {itemData ? "Сохранить изменения" : "Добавить товар"}
+          {isEdit ? "Сохранить" : "Добавить"}
         </Button>
-        <Button onClick={onClose} appearance="subtle">
+
+        <Button onClick={onClose} className={styles.cancelButton}>
           Отмена
         </Button>
       </Modal.Footer>

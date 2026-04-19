@@ -1,79 +1,176 @@
 .window {
     position: fixed;
-    background: #00000055;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
+    background: rgba(3, 8, 20, 0.72);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 5;
-}
-
-.form h2 {
-    color: #C8A180;
-}
-
-.form label {
-    width: 100px;
+    padding: 20px;
+    z-index: 9999;
 }
 
 .form {
-    max-width: 400px;
-    background-color: #f2f2f2;
-    border-radius: 20px;
-    padding: 30px 20px;
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    padding: 34px 28px 28px;
+    border-radius: 28px;
+    background:
+        linear-gradient(180deg, rgba(17, 24, 39, 0.98) 0%, rgba(11, 18, 32, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    position: relative;
-    color: #313131;
+    gap: 18px;
+    color: #ffffff;
 }
 
-.closeX {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    width: 25px;
-    height: 25px;
-    background: #040404;
-    padding: 18px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
+.badge {
+    width: fit-content;
+    display: inline-flex;
     align-items: center;
-    font-size: 24px;
-    font-family: cursive;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.22);
+    color: #60a5fa;
+    font-size: 13px;
     font-weight: 700;
-    color: #fff;
-    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.form button {
+.form h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.subtitle {
+    margin: -4px 0 4px;
+    color: #94a3b8;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.field label {
+    color: #e2e8f0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.inputShell {
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: 0.2s ease;
+}
+
+.inputShell:focus-within {
+    border-color: rgba(96, 165, 250, 0.42);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.inputShell svg {
+    color: #60a5fa;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.inputShell input {
+    width: 100%;
     border: none;
-    padding: 12px 30px;
+    outline: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.inputShell input::placeholder {
+    color: #64748b;
+}
+
+.submitButton {
+    min-height: 56px;
+    margin-top: 4px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 0 14px 28px rgba(37, 99, 235, 0.28);
     cursor: pointer;
-    color: #fff;
-    font-size: 20px;
-    transition: .35s;
-    border-radius: 5px;
-    background: rgb(217, 183, 154);
+    transition: 0.25s ease;
 }
 
-.form h3 {
-    color: red;
+.submitButton:hover {
+    transform: translateY(-2px);
 }
 
-@media (max-width: 430px) {
+.closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
 
-    .form div {
-        width: 280px;
-        gap: 5px;
+.closeButton:hover {
+    background: rgba(239, 68, 68, 0.16);
+    color: #fca5a5;
+}
+
+.closeButton svg {
+    width: 20px;
+    height: 20px;
+}
+
+.error {
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(248, 113, 113, 0.18);
+    color: #fca5a5;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .form {
+        padding: 28px 18px 20px;
+        border-radius: 22px;
     }
 
-    .form .closeX {
-        width: 25px;
+    .form h2 {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 14px;
     }
 }

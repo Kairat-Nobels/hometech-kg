@@ -1,0 +1,219 @@
+.product-page {
+  min-height: 100vh;
+  padding: 36px 0 80px;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 22%),
+    radial-gradient(circle at top right, rgba(250, 204, 21, 0.08), transparent 16%),
+    linear-gradient(180deg, #0b1220 0%, #0f172a 45%, #111827 100%);
+  color: #ffffff;
+
+  .back-shop {
+    margin-bottom: 28px;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #60a5fa;
+      font-weight: 600;
+      transition: 0.2s ease;
+
+      &:hover {
+        color: #93c5fd;
+      }
+
+      svg {
+        font-size: 22px;
+      }
+    }
+  }
+
+  .loading-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 60px 0;
+  }
+
+  .fetch-error {
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    p {
+      margin-bottom: 10px;
+      color: #e2e8f0;
+
+      &:last-child {
+        margin-bottom: 0;
+        color: #94a3b8;
+      }
+    }
+  }
+
+  .product-layout {
+    display: grid;
+    grid-template-columns: 1fr 0.95fr;
+    gap: 34px;
+    align-items: start;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .product-image-card {
+    position: relative;
+    padding: 28px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+
+    img {
+      width: 100%;
+      max-height: 540px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(250, 204, 21, 0.12);
+      color: #facc15;
+      border: 1px solid rgba(250, 204, 21, 0.18);
+      font-size: 13px;
+      font-weight: 700;
+    }
+  }
+
+  .product-info {
+    padding: 8px 0;
+
+    .product-category {
+      display: inline-flex;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.24);
+      color: #60a5fa;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      margin-bottom: 16px;
+      font-size: 46px;
+      line-height: 1.1;
+      font-weight: 900;
+      color: #ffffff;
+
+      @media (max-width: 768px) {
+        font-size: 34px;
+      }
+    }
+
+    .product-description {
+      margin-bottom: 24px;
+      color: #cbd5e1;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .product-prices {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 26px;
+
+      del {
+        color: #64748b;
+        font-size: 18px;
+      }
+
+      span {
+        color: #facc15;
+        font-size: 30px;
+        font-weight: 800;
+      }
+    }
+
+    .add-to-cart-btn {
+      min-height: 56px;
+      padding: 0 24px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: 0 14px 28px rgba(37, 99, 235, 0.3);
+      transition: 0.25s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      svg {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .product-benefits {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    .benefit-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      .benefit-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(250, 204, 21, 0.12);
+        color: #facc15;
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      h4 {
+        margin: 0 0 6px;
+        color: #ffffff;
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      p {
+        margin: 0;
+        color: #94a3b8;
+        line-height: 1.7;
+      }
+    }
+  }
+}

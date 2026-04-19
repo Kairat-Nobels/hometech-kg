@@ -1,9 +1,10 @@
 import React from "react";
 import { Modal } from "rsuite";
 import { FaWhatsapp } from "react-icons/fa";
-import payment from "../../../../assets/images/payment2.png";
+import { FiCreditCard } from "react-icons/fi";
 import { useSelector } from "react-redux";
-import "rsuite/dist/rsuite.min.css";
+import payment from "../../../../assets/images/payment.png";
+import styles from "./paymentModal.module.css";
 
 const PaymentModal = ({ isOpen, onClose, promoApplied, discount }) => {
   const cart = useSelector((state) => state.cart.cart);
@@ -13,82 +14,65 @@ const PaymentModal = ({ isOpen, onClose, promoApplied, discount }) => {
       (sum, item) => sum + Math.round(item.price) * item.quantity,
       0
     );
-  const discountedPrice = Math.round(getTotalPrice() * (1 - (discount || 0)));
+
+  const discountedPrice = Math.round(
+    getTotalPrice() * (1 - (discount || 0))
+  );
 
   const orderText =
-    "Здравствуйте! Пишу по поводу заказа. Вот детали заказа:\n" +
+    "Здравствуйте! Пишу по поводу заказа:\n\n" +
     cart
       .map(
         (item, idx) =>
           `${idx + 1}) ${item.title} — ${item.quantity} шт. (${item.price} сом)`
       )
       .join("\n") +
-    `\n\nИтого: ${discountedPrice} сом${promoApplied ? " (со скидкой 20%)" : ""}`;
+    `\n\nИтого: ${discountedPrice} сом${promoApplied ? " (со скидкой)" : ""
+    }`;
 
-
-  const whatsappLink = `https://wa.me/996700762347?text=${encodeURIComponent(
+  const whatsappLink = `https://wa.me/996999779947?text=${encodeURIComponent(
     orderText
   )}`;
 
   return (
-    <Modal open={isOpen} onClose={onClose} size="xs">
+    <Modal open={isOpen} onClose={onClose} size="420px" className={styles.modalRoot}>
       <Modal.Header>
-        <Modal.Title
-          style={{
-            fontWeight: 600,
-            fontSize: 24,
-            textAlign: "center",
-          }}
-        >
-          Оплата
+        <Modal.Title>
+          <div className={styles.titleWrap}>
+            <div className={styles.icon}>
+              <FiCreditCard />
+            </div>
+            <div>
+              <h3>Оплата заказа</h3>
+              <p>Переведите сумму и отправьте чек</p>
+            </div>
+          </div>
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <p
-          style={{
-            marginBottom: 12,
-            color: "#444",
-            textAlign: "center",
-          }}
-        >
-          Произведите оплату по этим реквизитам и отправьте чек на WhatsApp
+
+      <Modal.Body className={styles.body}>
+        <p className={styles.text}>
+          Произведите оплату по реквизитам ниже и отправьте чек через WhatsApp
         </p>
-        <img
-          src={payment}
-          alt="Реквизиты для оплаты"
-          style={{
-            width: "100%",
-            maxWidth: 300,
-            maxHeight: 370,
-            borderRadius: 10,
-            border: "1px solid #eee",
-            margin: "0 auto",
-            display: "block",
-          }}
-        />
+
+        <div className={styles.imageWrap}>
+          <img src={payment} alt="payment" />
+        </div>
+
+        <div className={styles.total}>
+          Итого: <span>{discountedPrice} сом</span>
+        </div>
       </Modal.Body>
-      <Modal.Footer>
+
+      <Modal.Footer className={styles.footer}>
         <a
           href={whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 12,
-            background: "#22c55e",
-            color: "#fff",
-            fontWeight: 500,
-            fontSize: 18,
-            padding: "12px 0",
-            borderRadius: 8,
-            textDecoration: "none",
-            marginTop: 8,
-          }}
+          className={styles.whatsappButton}
         >
-          <FaWhatsapp style={{ fontSize: 32 }} />
-          <span>Отправить чек</span>
+          <FaWhatsapp />
+          Отправить чек
         </a>
       </Modal.Footer>
     </Modal>

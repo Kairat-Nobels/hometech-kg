@@ -1,0 +1,218 @@
+.tableWrapper {
+  width: 100%;
+}
+
+.table {
+  background: transparent;
+  color: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* RSUITE TABLE RESET */
+.table :global(.rs-table) {
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+.table :global(.rs-table-row-header) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-header-row-wrapper) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-body-row-wrapper) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-row) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-cell) {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.table :global(.rs-table-cell-content) {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+.table :global(.rs-table-cell-header) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-cell-header .rs-table-cell-content) {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.table :global(.rs-table-hover .rs-table-row:hover .rs-table-cell) {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* fixed columns */
+.table :global(.rs-table-fixed-left),
+.table :global(.rs-table-fixed-right) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-fixed-left .rs-table-cell),
+.table :global(.rs-table-fixed-right .rs-table-cell) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-fixed-left .rs-table-cell-content),
+.table :global(.rs-table-fixed-right .rs-table-cell-content) {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+.table :global(.rs-table-cell-first),
+.table :global(.rs-table-cell-last) {
+  background: transparent !important;
+}
+
+.table :global(.rs-table-cell-header.rs-table-cell-first .rs-table-cell-content),
+.table :global(.rs-table-cell-header.rs-table-cell-last .rs-table-cell-content) {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: #ffffff !important;
+}
+
+/* scrollbar */
+.table :global(.rs-table-scrollbar-vertical),
+.table :global(.rs-table-scrollbar-horizontal) {
+  background: transparent !important;
+}
+
+/* CONTENT */
+.orderList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+.orderItem {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.orderItemTitle {
+  display: block;
+  margin-bottom: 4px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.orderItemMeta {
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.statusDefault {
+  background: rgba(148, 163, 184, 0.12);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.statusOrdered {
+  background: rgba(250, 204, 21, 0.12);
+  color: #facc15;
+  border: 1px solid rgba(250, 204, 21, 0.2);
+}
+
+.statusPaid {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.22);
+}
+
+.statusDelivered {
+  background: rgba(34, 197, 94, 0.12);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.22);
+}
+
+.statusCanceled {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.22);
+}
+
+.amountValue {
+  color: #facc15;
+  font-weight: 800;
+}
+
+.addressValue {
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+.emptyValue {
+  color: #94a3b8;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionButton {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+}
+
+.actionButton:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.editIcon {
+  color: #4ade80;
+  font-size: 20px;
+}
+
+.deleteIcon {
+  color: #f87171;
+  font-size: 20px;
+}
+
+.errorText {
+  margin-top: 16px;
+  color: #fca5a5;
+  font-size: 14px;
+  font-weight: 600;
+}
