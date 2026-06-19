@@ -13,6 +13,7 @@ import CameModal from '../CameModal/CameModal';
 import { getItems } from '../../store/slices/itemsSlice';
 import { getCategories } from '../../store/slices/categoriesSlice';
 import { setCategory } from '../../store/features/filterSlice';
+import TickerBar from '../TickerBar/TickerBar';
 
 const Header = () => {
     const [hamburger, setHamburger] = useState(true);
@@ -195,6 +196,7 @@ const Header = () => {
                 <Outlet />
             </main>
             <Footer />
+            <TickerBar />
         </>
     );
 };
